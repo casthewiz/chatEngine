@@ -7,10 +7,10 @@
 
 
 
-var $messageArray = array("Chat Status: LIVE");
-var $userArray = [];
-var $userCheckSum = 0;
-var $messageCheckSum = 1;
+$messageArray = array("Chat Status: LIVE");
+$userArray = [];
+$userCheckSum = 0;
+$messageCheckSum = 1;
 
 
 set_time_limit(0);
@@ -34,18 +34,20 @@ function removeUser($userName){
 function addMessage($message){
 	array_push($messageArray, $message);
 	$messageCheckSum += 1;
+	echo "good job";
 }
 
 
 function updateChat(){
-	var $messages = [];
-	var $j = 0;
+	echo "hi there";
+	$messages = [];
+	$j = 0;
 	while(true){
-	if($_GET['checksumChat'] != $messageCheckSum;)
-		for ($i=$_GET['checksumChat'); $i < ; $i++) { 
+	if($_GET['checksumChat'] != $messageCheckSum)
+		for ($i=$_GET['checksumChat']; $i < sizeof($messageArray); $i++) { 
 			$messages[$j] = $messageArray[$i];
 		}
-		echo json_encode(array($userCheckSum, $messages))	
+		echo json_encode(array($userCheckSum, $messages));	
 	}
 }
 

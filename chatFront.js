@@ -28,6 +28,8 @@ $("#mainTitle").append(formattedDate);
 
 	username = name;
 
+	pollChat();
+
 	})
 
 	$(window).on('beforeunload', function(){
@@ -67,7 +69,7 @@ $("#chatSendButton").click(function(){
 function pollChat(){	
 		$.ajax({
 		type: 'GET',
-		url:"chatAtNight.php?updateChat="+checksumChat,
+		url:"chatAtNight.php?updateChat",
 		data: checksumChat,
 		success: function(data){
 		var tmp = jQuery.parseJSON(data);
@@ -76,7 +78,8 @@ function pollChat(){
 		$('#chatDisplay').append();
 		},
 		dataType: "json",
-		complete: pollChat, timeout:30000
+		//complete: pollChat,
+		timeout:30000
 		});
 }
 
@@ -104,8 +107,9 @@ function send(message){
 	$.ajax({
 		url:"chatAtNight.php?addMessage=" +message,
 		async:true,
-		success:function(){
+		success:function(data){
 			console.log('success');
+			console.log(data);
 		},
 		error:function(){
 			console.log('error');
@@ -132,6 +136,6 @@ function logOut(username){
 	})
 }
 
-pollChat();
+
 
 });	
