@@ -15,7 +15,7 @@ $("#mainTitle").append(formattedDate);
 
 	var name = prompt("What's your name?", "Nameless Tech Service Drone");
 	// default name is 'Nameless Tech Service Drone'
-	if (!name || name === ' ' || name === 'Nameless Tech Service Drone') {
+	if (!name || name == ' ' || name == 'Nameless Tech Service Drone') {
 		name = "Nameless Tech Service Drone " + i;
 		i++;  
 	}
@@ -78,7 +78,7 @@ function pollChat(){
 		$('#chatDisplay').append();
 		},
 		dataType: "json",
-		//complete: pollChat,
+		complete: pollChat,
 		timeout:30000
 		});
 }
@@ -109,7 +109,6 @@ function send(message){
 		async:true,
 		success:function(data){
 			console.log('success');
-			console.log(data);
 		},
 		error:function(){
 			console.log('error');
